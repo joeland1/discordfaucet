@@ -184,7 +184,6 @@ async def faucetsend(message, wallet, toaddress):
         f=open(authoridfile,"+w")
         f.write(str(time.time()))
         f.close
-        wallet.walletpassphrase("", 60)
         txid = wallet.sendfrom(config.FAUCET_SOURCE,toaddress, config.AMOUNT)
         if len(txid) == 64:
             await sendmessage(message, txid)
